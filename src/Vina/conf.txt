@@ -1,0 +1,11 @@
+receptor = Model_modified209.pdbqt
+
+center_x = 24.141
+center_y = 64.389
+center_z = -19.124
+
+size_x = 68
+size_y = 62
+size_z = 46
+
+num_modes = 10
