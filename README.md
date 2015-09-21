@@ -1,1 +1,17 @@
-# mpi-vina
+# mpiVINA
+MPI based parallel implementation of Autodock Vina
+-------------------------------------------------------------------------
+
+mpiVINA is an open-source parallelization of AutoDock Vina, which massively reduces the time of virtual screening by using compute clusters 
+or network of computers. It is developed based on MPI and intended for distributed memory environment. The goal of mpiVINA is to reduce the 
+overall time of screening ligand data set. AutoDock Vina is the primary docking program of mpiVINA.
+
+In MPIVina, protein-ligand docking is distributed into different nodes of a computational cluster where each node performs docking of 
+a single ligand against a target receptor. Distribution of ligand set allows docking multiple ligands in multiple nodes concurrently.
+
+MPIVINA reduces the overall time of doing virtual screening dramatically than the traditional virtual screening approach by using parallel 
+processing. It also reduces the magnitude and complexity of the screening problem and focuses on drug discovery and optimization efforts on 
+the most promising leads. 
+
+
+
