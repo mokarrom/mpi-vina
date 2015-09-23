@@ -78,11 +78,12 @@ int main(int argc, char *argv[])
     if (rank == MASTER)
     {
         endTime = MPI_Wtime(); // end timer.
-        printf("\n\n.....................................\n"); fflush(stdout);
-        printf("   Number of processors    = %d \n", numProcs); fflush(stdout);
-        printf("   Number of Lignds        = %u \n", totalLigands); fflush(stdout);
-        printf("   Total time required     = %.2lf seconds.\n", endTime - startTime); fflush(stdout);
-        printf(".....................................\n\n");
+        printf("\n\n..........................................\n"); 
+        printf("   Number of workers       = %d \n", numProcs - 1); 
+        printf("   Number of Lignds        = %u \n", totalLigands); 
+        printf("   Total time required     = %.2lf seconds.\n", endTime - startTime); 
+        printf("..........................................\n\n");
+		fflush(stdout);
 
         ClearLigandList(&lgndsList); //Clear memory occupied by ligandlist.
     }
@@ -124,14 +125,16 @@ void mpiVinaWorker(int workerId)
     MPI_Status wStatus;
     char lignadName[MAX_LIGAND_NAME_LENGTH];
 
-    printf("Worker %d has started\n", workerId);fflush(stdout);
+    printf("Worker %d has started.\n", workerId);
+	fflush(stdout);
     //Initial request to manager for assigning work item.
     MPI_Send(NULL, 0, MPI_INT, 0, WORK_REQ_TAG, MPI_COMM_WORLD);
     MPI_Recv(lignadName, 1, MPI_LIGAND, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &wStatus);
 
     while (wStatus.MPI_TAG == COMPUTE_TAG)
     {
-        printf("Worker = %d : ligand '%s' is processing...\n", workerId, lignadName);fflush(stdout);
+        printf("Worker = %d : ligand '%s' is processing...\n", workerId, lignadName);
+		fflush(stdout);
 
         char vinaCmd[500]="Vina/vina --config Vina/conf.txt --ligand ./Ligand/";
         strcat(vinaCmd, lignadName);
@@ -157,11 +160,13 @@ void mpiVinaWorker(int workerId)
 
     if (wStatus.MPI_TAG == TERMINATE_TAG)
     {
-        printf("Worker %d has terminated\n", workerId);fflush(stdout);
+        printf("Worker %d has terminated.\n", workerId);
+		fflush(stdout);
     }
     else
     {
-        printf("Worker %d has received invalid Tag\n", workerId);fflush(stdout);
+        printf("Worker %d has received invalid Tag\n", workerId);
+		fflush(stdout);
     }
     return;
 }
