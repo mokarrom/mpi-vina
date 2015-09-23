@@ -15,8 +15,11 @@ Usage
 1. Convert your target receptor (i.e., protein) and all ligands into *pdbqt format* format (using any traditional tools).
 2. Put all the ligand files in the `Ligand` directory.
 3. Put your configuration file and target receptor in the `Vina` directory.
-4. To build and run the program type `./runMpiVINA.bash` in CLI. The corresponding Makefile and bash script will do the remaining job. 
-5. Check the `mpiVina.log` for output.
+4. To build and run the program type `./runMpiVINA.bash` in CLI (use `gridEngineJobScript.sh` for Gride Engine schedular). The corresponding Makefile and Shell script will do the remaining job. 
+5. All output files are placed in the `Output` directory.
+     -  `MpiVina.log` file contains summary of the parallel procesing.
+     -  `SortedResult` file contains *binding affinity* of all ligands in sorted order.
+     -  `<ligand_name>.pdbqt.pdbqt` & `<ligand_name>.pdbqt.txt` files contain the detailed result of individual ligand.
 
 Reference
 ---------
