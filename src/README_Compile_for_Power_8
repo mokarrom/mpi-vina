@@ -1,0 +1,16 @@
+To compile on IBM Power 8 follow these steps:
+1. module load xLC compilers and Spectrum MPI
+    [fjimenez@Login-node-02 vina_mpi_covid]$ module list
+    Currently Loaded Modulefiles:
+      1) xlC/13.1.5    2) xlf/15.1.5    3) numa/2.0.11   4) smpi/10.1.0
+2.  [fjimenez@login_node-02 vina_mpi_covid]$ which mpirun
+    mpirun is *****/spectrum_mpi/10.1/bin/mpirun    '**** is the path file where is installed SMPI
+3.  Run the command 
+    mpicc -o mpiVINA.out mpiVINAv2.o CLinkedList.o -Lmpi
+    Put attention on the "-Lmpi" "L" is uppercase.
+4.  Done
+    -rwxr-xr-x 1 fjimenez workshop  72K Apr  3 14:50 mpiVINA
+    -rwxr-xr-x 1 fjimenez workshop  72K Apr  3 14:51 mpiVINA.out
+    -rwxr-xr-x 1 fjimenez workshop 5.4K Apr  3 14:11 mpiVINAv2.c
+5.  mpicc -c mpiVINAv2.c
+6.  
